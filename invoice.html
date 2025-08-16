@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCC Invoice Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="bg-sky-400 text-sky-400">
+
+    <div class="container mx-auto">
+
+        <h1 class="text-center text-sky-100 mt-5 text-xl bg-black rounded-sm p-2">SCC Invoice Generator</h1>
+        
+        <div id="inputScreen" class="grid grid-cols-1 py-5 gap-1">
+
+            <select id="c_id" class="bg-slate-900 py-3 px-3 outline-0 border border-b-black rounded-sm">
+                <option value="data">Select Cource</option>
+                <option value="data">Other</option>
+                <option value="">IT Cource</option>
+                <option value="web">Spoken English Cource</option>
+                <option value="design">2025 A/L Common Test Class</option>
+                <option value="marketing">Graphic Design</option>
+            </select>
+
+            <input id="p_id" type="number" placeholder="Payment" class="bg-slate-900 py-3 px-3 outline-0 border border-b-black rounded-sm">
+            
+            <h1 class="text-black mt-5 text-xl">Student Details</h1>
+            <input id="s_id" type="text" placeholder="Student ID" class="bg-slate-900 py-3 px-3 outline-0 border border-black rounded-sm uppercase">
+            <input id="b_id" type="text" placeholder="Batch" class="bg-slate-900 py-3 px-3 outline-0 border border-black uppercase rounded-sm">
+            <input id="n_id" type="text" placeholder="Student Name" class="bg-slate-900 py-3 px-3 outline-0 border border-black rounded-sm">
+            <input id="a_id" type="text" placeholder="Address" class="bg-slate-900 py-3 px-3 outline-0 border border-black rounded-sm">
+            <input id="m_id" type="tel" maxlength="10" placeholder="Mobile" class="bg-slate-900 py-3 px-3 outline-0 border border-black rounded-sm">
+            <input id="e_id" type="email" placeholder="Email" class="bg-slate-900 py-3 px-3 outline-0 border border-black rounded-sm">
+            
+            <!-- save button -->
+            <a href="#" onclick="addToInvoice()" class="bg-sky-600 border border-sky-700 text-slate-900 hover:bg-slate-900 hover:text-sky-600 py-3 mt-2 text-xl rounded-sm flex justify-center">Save to Invoice</a>
+
+        </div>
+
+        <!-- Invoice Screen -->
+        <div id="invScreen"  style="display: none;" class="max-w-md mx-auto bg-white text-black p-5 shadow-md rounded-md space-y-4 border mt-10 uppercase">
+            <div class="flex justify-center">
+                <img src="./assets/scc_logo.jpg" alt="SCC Logo" class="h-20">
+            </div>
+            <h2 class="text-center text-xl font-bold underline">INVOICE FOR STUDENT</h2>
+            
+            <div class="text-sm">
+                <p><span class="font-semibold">DATE :</span> <span id="date">2025-03-03</span></p>
+            </div>
+
+            <div class="border border-black">
+                <div class="bg-gray-200 font-semibold px-3 py-1 border-b border-black">PAYMENT CONFIRMATION</div>
+                <div class="p-3 text-sm">
+                    <p>
+                        <span class="font-semibold">COURSE :</span> 
+                        <span id="course"></span> 
+                    </p>
+                    <p>
+                        <span class="font-semibold">PAYMENT :</span> 
+                        <span id="payment"></span> 
+                        <span class="ml-4 text-green-700 font-semibold" id="paid-status">PAID</span>
+                    </p>
+                    <p>
+                        <span class="font-semibold">STATUS :</span> 
+                        <span class="bg-green-500 text-white px-2 rounded ml-2">SUCCESS</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-black">
+                <div class="bg-gray-200 font-semibold px-3 py-1 border-b border-black">STUDENT DETAILS</div>
+                <div class="p-3 text-sm space-y-1">
+                    <p><span class="font-semibold">STUDENT ID :</span> <span id="sid"></span></p>
+                    <p><span class="font-semibold">BATCH :</span> <span id="batch"></span></p>
+                    <p><span class="font-semibold">STUDENT NAME :</span> <span id="sname"></span></p>
+                    <p><span class="font-semibold">ADDRESS :</span> <span id="address"></span></p>
+                    <p><span class="font-semibold">MOBILE :</span> <span id="mobile"></span></p>
+                    <p><span class="font-semibold">EMAIL :</span> <a href="#" id="email" class="text-blue-600 underline lowercase"></a></p>
+                </div>
+            </div>
+
+            <div class="text-sm text-center mt-3">
+                <p class="italic">NOTE: We will send time table via WhatsApp.</p>
+                <p class="mt-2">thank you..!</p>
+                <p>*****</p>
+            </div>
+        </div>
+        <!-- Invoice Screen -->
+
+        <div class="justify-center mb-4 gap-2" style="display: none;" id="btns">
+            <div class="flex justify-center mt-4">
+                <a href="#" onclick="back()" class="bg-sky-800 text-white px-6 py-2 rounded hover:bg-black transition">
+                    Back
+                </a>
+            </div>
+            <div class="flex justify-center mt-4">
+                <a href="#" onclick="printInvoice()" class="bg-sky-600 text-white px-6 py-2 rounded hover:bg-black transition">
+                    Print Invoice
+                </a>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <script src="invoice.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
